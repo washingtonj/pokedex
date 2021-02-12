@@ -12,7 +12,7 @@ export const Colors = {
     bg: "#7383B9",
     type: "rgba(15, 106, 192, 1)",
   },
-  eletric: {
+  electric: {
     bg: "#F2CB55",
     type: "rgba(238, 213, 53, 1)",
   },
