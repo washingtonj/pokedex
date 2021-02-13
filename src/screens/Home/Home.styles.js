@@ -1,19 +1,82 @@
 import styled from "styled-components/native";
+
+// Utils
+// import { StatusBar } from 'react-native'
+
+// UI Components
 import { ApplicationTitle, Description } from "../../styles/Typography";
 import { Colors } from "../../styles/Colors";
+import { Container as MarginContainer } from '../../styles/Container'
+
+// Animated Components
+import { View } from "react-native-animatable";
+
+// Other Icons
 import SearchIco from "../../assets/icons/generics/search.svg";
+import Pokeball from "../../assets/icons/generics/pokeball.png"
+
+// Loader Icons
 import LoaderIco from "../../assets/icons/generics/pokeball.svg";
-import { View } from 'react-native-animatable'
+
+// Filter Icons
+import SortIco from "../../assets/icons/generics/sort.svg";
+import FilterIco from "../../assets/icons/generics/filter.svg";
+import GenerationIco from "../../assets/icons/generics/generation.svg";
 
 export const Container = styled.View`
-  background: white;
-  margin: 50px 25px;
+  margin-top: 20px;
 `;
 
-export const Welcome = {
+export const Wrapper = styled(MarginContainer)`
+
+`;
+
+export const PokeballBackground = styled.ImageBackground.attrs({
+  source: Pokeball,
+  imageStyle: { resizeMode: "cover", position: "absolute" },
+})`
+  width: 100%;
+`
+
+export const Navbar = {
   Container: styled.View`
-    background: white;
+    flex-direction: row;
+    height: 50px;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
   `,
+
+  Generation: styled(GenerationIco).attrs({
+    fill: "black",
+  })`
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+  `,
+
+  Sort: styled(SortIco).attrs({
+    fill: "black",
+  })`
+    width: 25px;
+    height: 25px;
+    margin-right: 10px
+  `,
+
+  Filter: styled(FilterIco).attrs({
+    fill: "black",
+  })`
+    width: 25px;
+    height: 25px;
+  `,
+
+
+};
+
+export const Welcome = {
+  Container: styled.View``,
 
   Title: styled(ApplicationTitle)`
     color: black;
@@ -79,14 +142,12 @@ export const Loader = {
   `,
 
   Animated: styled(View).attrs({
-    animation: 'rubberBand',
-    iterationCount: "infinite"
-  })`
-  
-  `,
+    animation: "rubberBand",
+    iterationCount: "infinite",
+  })``,
 
   Icon: styled(LoaderIco).attrs({
-    fill: '#000'
+    fill: "#000",
   })`
     width: 35px;
     height: 35px;
@@ -95,6 +156,5 @@ export const Loader = {
 
   Message: styled.Text`
     font-size: 13px;
-  `
-
+  `,
 };
