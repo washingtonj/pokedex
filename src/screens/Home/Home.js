@@ -9,18 +9,25 @@ import {
   PokeballBackground,
   Wrapper,
 } from "./Home.styles";
-import { HomeCard as Card } from "../../components";
-import { getById } from "../../services/pokedex";
+import { HomeCard as Card, HomeFilter as Filters } from "../../components";
+import PokedexService from "../../services/pokedex";
+import { Alert, TouchableOpacity } from "react-native";
 
 export default () => {
   const [pokes, setPokes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState(false);
 
   async function getList() {
-    const data1 = await getById(1);
-    const data2 = await getById(5);
-
-    setPokes([...data1, ...data2]);
+    try {
+      const promise = await PokedexService.get("pokemon/1");
+      const data = promise.data;
+      setPokes([...data]);
+    } catch (error) {
+      setPokes([]);
+      console.log();
+      Alert.alert(error.response.data.message);
+    }
     setLoading(false);
   }
 
@@ -36,7 +43,9 @@ export default () => {
           <Navbar.Container>
             <Navbar.Generation />
             <Navbar.Sort />
-            <Navbar.Filter />
+            <TouchableOpacity onPress={() => setFilter(true)}>
+              <Navbar.Filter />
+            </TouchableOpacity>
           </Navbar.Container>
 
           {/* Apresentation Message */}
@@ -85,6 +94,8 @@ export default () => {
           </ItemList.Container>
         )}
       </Wrapper>
+
+      {filter && <Filters.Filters onSubmit={() => setFilter(false)} />}
     </Container>
   );
 };

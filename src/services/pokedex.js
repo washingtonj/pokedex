@@ -6,15 +6,3 @@ const pokedex = axios.create({
 
 export default pokedex;
 
-export const getById = async (id) => {
-  try {
-    const response = await pokedex.get(`pokemon/${id}`);
-    const data = response.data;
-    return data;
-  } 
-  
-  catch (error) {
-    return error;
-  }
-  
-};

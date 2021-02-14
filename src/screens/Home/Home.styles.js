@@ -24,6 +24,7 @@ import FilterIco from "../../assets/icons/generics/filter.svg";
 import GenerationIco from "../../assets/icons/generics/generation.svg";
 
 export const Container = styled.View`
+  flex: 1;
   margin-top: 20px;
 `;
 
