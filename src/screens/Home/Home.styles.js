@@ -26,6 +26,7 @@ import GenerationIco from "../../assets/icons/generics/generation.svg";
 export const Container = styled.View`
   flex: 1;
   margin-top: 20px;
+  background: white;
 `;
 
 export const Wrapper = styled(MarginContainer)`
@@ -132,7 +133,7 @@ export const ItemList = {
 
   Scrolling: styled.View`
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 200px;
   `,
 };
 

@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import { PokemonType } from "../../styles/Typography";
 import { Colors } from "../../styles/Colors";
-import Types from "../../assets/icons/types";
+import { View } from "react-native-animatable";
 
 export const Badge = {
-  Container: styled.View`
+  Container: styled(View).attrs((props) => ({
+    ...props,
+  }))`
     flex-direction: row;
-    padding: 5px;
     background: ${({ type }) => (type ? Colors[type].type : "transparent")};
     border-radius: 5px;
+    height: 25px;
+    padding: 0 8px;
+    align-items: center;
+    justify-content: center;
   `,
 
   Title: styled(PokemonType)`

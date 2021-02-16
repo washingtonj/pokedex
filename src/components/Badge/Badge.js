@@ -3,8 +3,8 @@ import { Badge } from "./Badge.styles";
 import { Colors } from "../../styles/Colors";
 import Types from "../../assets/icons/types";
 
-export default function Badges({ style, type  }) {
-  const props = {
+export default function Badges({ style, type, ...props  }) {
+  const defaultProps = {
     fill: Colors.text.white,
     style: { width: 15, height: 15, marginRight: 5 },
   };
@@ -12,48 +12,48 @@ export default function Badges({ style, type  }) {
   function setIcon() {
     switch (type) {
       case "bug":
-        return <Types.bug {...props} />;
+        return <Types.bug {...defaultProps} />;
       case "dark":
-        return <Types.dark {...props} />;
+        return <Types.dark {...defaultProps} />;
       case "dragon":
-        return <Types.dragon {...props} />;
+        return <Types.dragon {...defaultProps} />;
       case "electric":
-        return <Types.electric {...props} />;
+        return <Types.electric {...defaultProps} />;
       case "fairy":
-        return <Types.fairy {...props} />;
+        return <Types.fairy {...defaultProps} />;
       case "fighting":
-        return <Types.fighting {...props} />;
+        return <Types.fighting {...defaultProps} />;
       case "fire":
-        return <Types.fire {...props} />;
+        return <Types.fire {...defaultProps} />;
       case "flying":
-        return <Types.flying {...props} />;
+        return <Types.flying {...defaultProps} />;
       case "ghost":
-        return <Types.ghost {...props} />;
+        return <Types.ghost {...defaultProps} />;
       case "grass":
-        return <Types.grass {...props} />;
+        return <Types.grass {...defaultProps} />;
       case "ground":
-        return <Types.ground {...props} />;
+        return <Types.ground {...defaultProps} />;
       case "ice":
-        return <Types.ice {...props} />;
+        return <Types.ice {...defaultProps} />;
       case "normal":
-        return <Types.normal {...props} />;
+        return <Types.normal {...defaultProps} />;
       case "poison":
-        return <Types.poison {...props} />;
+        return <Types.poison {...defaultProps} />;
       case "psychic":
-        return <Types.psychic {...props} />;
+        return <Types.psychic {...defaultProps} />;
       case "rock":
-        return <Types.rock {...props} />;
+        return <Types.rock {...defaultProps} />;
       case "steel":
-        return <Types.steel {...props} />;
+        return <Types.steel {...defaultProps} />;
       case "water":
-        return <Types.water {...props} />;
+        return <Types.water {...defaultProps} />;
       default:
         return <></>;
     }
   }
 
   return (
-    <Badge.Container style={style} type={type}>
+    <Badge.Container style={style} type={type} {...props}>
       {setIcon()}
       <Badge.Title children={type} />
     </Badge.Container>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Filter, ButtonContainer } from "./HomeFilter.styles";
 import Button from "../Button/Button";
 import HorizontalScrollWithTitle from "./HorizontalScrollWithTitle";
-import { HEIGHTS_ICONS, WEIGHTS_ICONS } from "../../utils/IconsWithColors";
+import { HEIGHTS_ICONS, WEIGHTS_ICONS, TYPES_ICONS } from "../../utils/IconsWithColors";
 
 function Filters({ onSubmit }) {
   const [types, setTypes] = useState([]);
@@ -10,15 +10,22 @@ function Filters({ onSubmit }) {
   const [heights, setHeights] = useState([]);
   const [weights, setWeights] = useState([]);
 
+  function reset() {
+    setTypes([]);
+    setWeaknesses([]);
+    setHeights([]);
+    setWeights([]);
+  }
+
   function handleSelect(id, type) {
-    function remove(prev) {
+    const remove = (prev) => {
       const next = [...prev];
       const index = next.indexOf(id);
       next.splice(index, 1);
       return next;
     }
 
-    function add(prev) {
+    const add = (prev) => {
       return [...prev, id];
     }
 
@@ -47,7 +54,7 @@ function Filters({ onSubmit }) {
         <Filter.Description children="Use advanced search to explore Pokémon by type, weakness, height and more!" />
 
         {/* To NEXT feature */}
-        {/* <HorizontalScrollWithTitle
+        <HorizontalScrollWithTitle
           title="Types"
           items={TYPES_ICONS}
           selecteds={types}
@@ -59,7 +66,7 @@ function Filters({ onSubmit }) {
           items={TYPES_ICONS}
           selecteds={weaknesses}
           onSelect={(id) => handleSelect(id, "weakness")}
-        /> */}
+        />
 
         <HorizontalScrollWithTitle
           title="Heights"
@@ -76,7 +83,7 @@ function Filters({ onSubmit }) {
         />
 
         <ButtonContainer>
-          <Button title="Reset" style={{ marginRight: 10 }} />
+          <Button title="Reset" onPress={reset} style={{ marginRight: 10 }} />
           <Button title="Submit" onPress={onSubmit} />
         </ButtonContainer>
       </Filter.Container>

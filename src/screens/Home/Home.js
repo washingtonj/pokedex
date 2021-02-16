@@ -13,16 +13,20 @@ import { HomeCard as Card, HomeFilter as Filters } from "../../components";
 import PokedexService from "../../services/pokedex";
 import { Alert, TouchableOpacity } from "react-native";
 
-export default () => {
+export default ({ navigation }) => {
   const [pokes, setPokes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState(false);
 
   async function getList() {
     try {
-      const promise = await PokedexService.get("pokemon/1");
+      const promise = await PokedexService.get("pokemon/1")
+      const promise1 = await PokedexService.get("pokemon/10");
+      const promise3 = await PokedexService.get("pokemon/20");
       const data = promise.data;
-      setPokes([...data]);
+      const data1 = promise1.data
+      const data3 = promise3.data
+      setPokes([...data, ...data1, ...data3]);
     } catch (error) {
       setPokes([]);
       console.log();
@@ -88,6 +92,7 @@ export default () => {
                   name={item.name}
                   types={item.types.map((item) => item.toLowerCase())}
                   avatar={item.sprite}
+                  onPress={() => navigation.navigate('About', { pokemon: item })}
                 />
               ))}
             </ItemList.Scrolling>
